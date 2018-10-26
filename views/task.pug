@@ -3,4 +3,18 @@ extends dashboardlayout
 block content
   h1= title
   p Welcome to #{title}
-  p This is Task List page 
+ 
+  
+  p This will have a CRUD facility for the group to indicate what tasks need to be tended to around the garden.
+
+  p By default it will request to view all of the posts from the task list database and will display them here.
+  
+  p There will also be links to page to Create (task_create.pug), Edit (task_edit.pug) and Delete (task_delete.pug) entries to the Task list
+   
+  a(href='/task_create') Create Task list item
+  br
+  a(href='/task_edit') Edit Task list item
+  br
+  a(href='/task_delete') Delete Task list item
+  br
+  a(href='/task') View Task list items

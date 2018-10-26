@@ -1,6 +1,13 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}
-  p This is Login page 
+    .row
+     h1 Hi, welcome to #{title}
+     |Please Log-In to your account 
+     .formHold
+      form(method="post")
+        fieldset
+         label(for="name") User Name:
+         input(name="name", type="text", placeholder="Who Are You") 
+         label(for="password") Password Address:
+         input(name="password", type="text", placeholder="Please enter a password")
+         button.button(type="submit") Log-In

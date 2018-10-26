@@ -1,8 +1,15 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}
-  p This is Register page 
-  
-  This will be the page that the user registratio form will be on.
+    .row
+     h1 Hi, welcome to #{title}
+     |Please create an account to become a Volunteer user
+     .formHold
+      form(method="post")
+        fieldset
+         label(for="name") User Name:
+         input(name="name", type="text", placeholder="Who Are You") 
+         label(for="email") Email Address:
+         input(name="email", type="text", placeholder="whats your email address") 
+         label(for="password") Password:
+         input(name="password", type="text", placeholder="Please enter a password")
+         button.button(type="submit") Create Account

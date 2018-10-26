@@ -1,0 +1,32 @@
+extends dashboardlayout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p This is the Harvest list Create page 
+  
+  p This page allows the user to create a harvest list post.
+  
+  p There will also be links to page to View (harvest.pug), Create (harvest_create.pug) and Delete (harvest_delete.pug) entries to the Harvest list
+  
+        h2.itemtitle Add to Harvest list Form
+        form(method="post")
+          fieldset
+            label(for="harvest_username") User:
+            input(name="harvest_username", type="text", placeholder="The user creating the harvest list item") 
+            br
+            label(for="harvest_type") Harvest type Name:
+            input(name="harvest_type", type="text", placeholder="Please name the type of harvested crop") 
+            br
+            label(for="harvest_weight") Harvest weight:
+            input(name="image", type="text", placeholder="Please enter the harvest weight") 
+            br
+            label(for="harvest_planted_date") Date crop was planted:
+            input(name="harvest_planted_date", type="text", placeholder="The date the item was planted") 
+            br
+            label(for="harvest_date") Date crop was harvested:
+            input(name="harvest_date", type="text", placeholder="The date the item was harvested")
+            br
+            label(for="harvest_units") Units of item available:
+            input(name="harvest_units", type="text", placeholder="The number of units of the item available") 
+            button.button(type="submit") Search

@@ -2,5 +2,17 @@ extends dashboardlayout
 
 block content
   h1= title
-  p Welcome to #{title}
-  p This is Harvest list page 
+  p Welcome this is the #{title} page
+   
+  
+  p By default it will request to view all of the posts from the harvest list database and will display them here.
+  
+  p There will also be links to page to Create (harvest_create.pug), Edit (harvest_edit.pug) and Delete (harvest_delete.pug) entries to the Harvest list
+   
+  a(href='/harvest_create') Create Harvest list item
+  br
+  a(href='/harvest_edit') Edit Harvest list item
+  br
+  a(href='/harvest_delete') Delete Harvest list item
+  br
+  a(href='/harvest') View Harvest list items
