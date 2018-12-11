@@ -1,29 +1,44 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    // Bootstrap CSS
-    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css', integrity='sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4', crossorigin='anonymous')
-   
-  body
-  
-  .header.container 
-    .nav.site-header.py-1(style=" border-width:5px; border-top-style:solid; border-bottom-style:solid;")
-      .container.d-flex.flex-column.flex-md-row.justify-content-between
-       .row
-        
-        a.py-2.text-muted.d-none.d-md-inline-block(href='/') Home
-        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        a.py-2.text-muted.d-none.d-md-inline-block(href='/about') About us
-        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        a.py-2.text-muted.d-none.d-md-inline-block(href='/contact') Contact us
-        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        a.py-2.text-muted.d-none.d-md-inline-block(href='/dashboard') Dashboard
-        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        a.py-2.text-muted.d-none.d-md-inline-block(href='/register') Register
-        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        a.py-2.text-muted.d-none.d-md-inline-block(href='/login') Log-In
-        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        a.py-2.text-muted.d-none.d-md-inline-block(href='/logout') Log-Out
-    block content
+    head
+        title= title
+
+        //link(rel='stylesheet', href='https://www.met.ie/widgets/national')
+        // ^^^ Unused attempt at integrating the Irish weather service, Met Eireann's meteorological data
+
+        //script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+        // Bootstrap CSS
+        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css')
+
+        link(href='https://fonts.googleapis.com/css?family=Unica+One', rel='stylesheet')
+        link(rel='stylesheet', href="../css/style.css", type="text/css")
+
+    body
+
+    .header.container
+        .nav.site-header.py-1(style=" border-width:5px; border-top-style:solid; border-bottom-style:solid;")
+            .container.d-flex.flex-column.flex-md-row.justify-content-between
+                .row
+
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/') Home
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/about') About us
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/contact') Contact us
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/dashboard') Dashboard
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/signup') Signup
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/login') Log-In
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/logout') Log-Out
+
+
+
+
+        block content
+
+
+
+

@@ -1,6 +1,50 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}
-  p This is the Home Page
+
+    //The following script executes a banner for warning the end user about the storage of cookies,
+    //so as to adhere to the new European GDPR laws.
+    script(src="js/cookie.notice.js")
+    script.
+        new cookieNoticeJS({
+            // Localizations of the notice message
+            'messageLocales': {
+                'it': 'Custom localized message'
+            },
+            // Localizations of the dismiss button text
+            'buttonLocales': {
+                'it': 'Chiudi'
+            },
+            // Position for the cookie-notifier (default=bottom)
+            'cookieNoticePosition': 'top',
+            // Shows the "learn more button (default=false)
+            'learnMoreLinkEnabled': false,
+            // The href of the learn more link must be applied if (learnMoreLinkEnabled=true)
+            'learnMoreLinkHref': '/learn/more/index.html',
+            // Text for optional learn more button
+            'learnMoreLinkText': {
+                'en': 'learn more'
+            },
+            // The message will be shown again in X days
+            'expiresIn': 30,
+            // Dismiss button background color
+            'buttonBgColor': '#d35400',
+            // Dismiss button text color
+            'buttonTextColor': '#fff',
+            // Notice background color
+            'noticeBgColor': '#000',
+            // Notice text color
+            'noticeTextColor': '#fff',
+            // the learnMoreLink color (default='#009fdd')
+            'linkColor': '#f00',
+            // The target of the learn more link (default='', or '_blank')
+            'linkTarget': '',
+            // Print debug output to the console (default=false)
+            'debug': false
+        });
+
+    h1= title
+    h2 Welcome to #{title}
+    p
+        | This is the Home Page of The Garden App! The ambitions of The Garden App are to gather a set of useful tools to aid
+        | a group of people in coming together to form a community garden, and to then make use of the application to aid them
+        | in the on going success of their garden.

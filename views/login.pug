@@ -1,13 +1,32 @@
 extends layout
 block content
     .row
-     h1 Hi, welcome to #{title}
-     |Please Log-In to your account 
-     .formHold
-      form(method="post")
-        fieldset
-         label(for="name") User Name:
-         input(name="name", type="text", placeholder="Who Are You") 
-         label(for="password") Password Address:
-         input(name="password", type="text", placeholder="Please enter a password")
-         button.button(type="submit") Log-In
+        .container
+            .item
+                h1
+                    span.fa.fa-sign-in
+                    |  Login
+
+                // LOGIN FORM
+                form(action='/login', method='post')
+                    .form-group
+                        label Username
+                        input.form-control(type='text', name='username', placeholder="Who Are You")
+                    .form-group
+                        label Password
+                        input.form-control(type='password', name='password', placeholder="Please enter a password")
+                    .form-group
+                        label Remember Me
+                        input.form-control(type='checkbox', name='remember', value='yes')
+                    button.button(type='submit') Login
+                hr
+                .item
+                    p.itemtitle
+                        | Need an account?
+                        br
+                        a.button(href='/signup') Signup
+                    p.itemtitle
+                    | Or go
+                    br
+                    a.button(href='/') home
+                    | .
