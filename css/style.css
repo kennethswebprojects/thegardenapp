@@ -1,0 +1,166 @@
+
+a {
+    color: #00B7FF;
+    font-size: 14pt;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-family: 'Unica One', sans-serif;
+    text-transform: uppercase;
+    background: #000000 url('../img/background.png');
+    color: #C0C0C0;
+}
+
+#text-warning {
+    display: none;
+}
+
+a, a:link, a:visited, a:hover {
+    color: #ffffff;
+}
+
+.row {
+    display: -webkit-flex;
+    display: inline-block;
+    width: 100%;
+}
+
+.holder {
+    text-align: left;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    font-family: 'Unica One', sans-serif;
+    font-size: 12pt;
+}
+
+h2 {
+    width: 100%;
+    text-align: left;
+    font-weight: normal;
+    font-size: 20px;
+    color: #E0E0E3;
+    margin-bottom: 0;
+}
+
+h3 {
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    color: #E0E0E3;
+    font-weight: normal;
+    margin-top: 0;
+}
+
+.grid-container {
+    display: grid;
+    align-content: center;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.item {
+
+    text-align: left;
+    padding: 5px 0;
+
+}
+
+#itemsContainer {
+    width: 100%;
+    text-align: left;
+
+}
+
+.itemp {
+    /*display: block;*/
+    color: #E0E0E3;
+    text-align: left;
+    padding: 4px 6px;
+    text-decoration: none;
+    font-size: 16px
+
+}
+
+#itemsContainer h2 {
+    /*display: block;*/
+    color: #555;
+    text-align: justify;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px
+
+}
+
+#itemsContainer h1 {
+    /*display: block;*/
+    color: #555;
+    text-align: left;
+    padding: 14px 16px;
+    text-decoration: none;
+
+}
+
+.itemhols {
+    margin: 10px;
+
+    display: inline-block;
+    width: 100%;
+
+    min-height: 30px;
+
+}
+
+/* End Style for products page */
+
+/* Style for form */
+
+input[type=text], select {
+
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+}
+
+/*box-sizing: border-box;*/
+input[type=submit] {
+
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.formHold {
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    width: 60%;
+}
+
+/* End Style for form */
+
+* {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}

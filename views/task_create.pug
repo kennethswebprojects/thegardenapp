@@ -1,19 +1,35 @@
 extends dashboardlayout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  p This is Task List page 
-  
-  p This will have a CRUD facility for the group to indicate what tasks need to be tended to around the garden.
-  
-  
-  
-  
-  a(href='/task_create') Create Task list item
-  br
-  a(href='/task_edit') Edit Task list item
-  br
-  a(href='/task_delete') Delete Task list item
-  br
-  a(href='/task') View Task list items
+    h1 Create a task page
+    a(href='/task_create') Create Task list item
+    br
+
+    a(href='/task') View Task list items
+    br
+    br
+
+
+
+    h2.itemtitle Welcome, to create a task, use the form below
+        br
+        br
+        .row
+            .container
+                .item
+                    form(accept-charset="UTF-8" action="/task_create" method="post")
+                        .form-group
+                            fieldset
+                                .form-group
+                                    label(for='Username') Username:
+                                    input.form-control(name='username', type='text', placeholder='Enter username')
+                                    br
+                                .form-group
+                                    label(for='Type') Task type:
+                                    input.form-control(name='type', type='text', placeholder='Enter the type of task')
+                                    br
+                                .form-group
+                                    label(for='Description') Task description:
+                                    input.form-control(name='description', type='text', placeholder='Please describe the type of task')
+                                    br
+                                button.button(type='submit') Create task item

@@ -1,10 +1,40 @@
 extends dashboardlayout
-
 block content
-  h1= title
-  p Welcome to #{title}
-  p This is the Harvest list Edit page 
-  
-  p This page allows the user to edit an existing harvest list post.
-  
-  p There will also be links to page to View (harvest.pug), Create (harvest_create.pug) and Delete (harvest_delete.pug) entries to the Harvest list
+    head
+        link(rel='stylesheet', href="../css/style.css", type="text/css")
+    body
+        h1 Edit Harvest Item Page
+
+            p This page allows the user to edit a harvest list post.
+
+        h2.itemtitle Edit Harvest list Form
+            .row
+                .container
+                    .item
+                        form(accept-charset="UTF-8" action='/harvest_edit/:id' method="post")
+                            .form-group
+                                fieldset
+                                    .form-group
+                                        label(for='Username') User:
+                                        input.form-control(name='username', type='text', placeholder='The user editing the harvest list item')
+                                        br
+                                    .form-group
+                                        label(for='Type') Harvest type Name:
+                                        input.form-control(name='type', type='text', placeholder='Please edit the type of harvested crop')
+                                        br
+                                    .form-group
+                                        label(for='Price') Harvest item Price:
+                                        input.form-control(name='price', type='text', placeholder='Please edit the price of harvested crop')
+                                        br
+                                    .form-group
+                                        label(for='Description') Harvest item description:
+                                        input.form-control(name='description', type='text', placeholder='Please describe the type of harvested crop')
+                                        br
+                                    .form-group
+                                        label(for='Harvestweight') Harvest weight:
+                                        input.form-control(name='harvestweight', type='text', placeholder='Please edit the harvest weight')
+                                        br
+                                    .form-group
+                                        label(for='Harvestunits') Units of item available:
+                                        input.form-control(name='harvestunits', type='text', placeholder='Edit the number of units of the item available')
+                                    button.button(type='submit') Submit

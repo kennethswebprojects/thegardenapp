@@ -1,0 +1,46 @@
+extends dashboardlayout
+block content
+    .col-xs-8
+    .dropdown.pull-right
+        a.dropdown-toggle(data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false')
+            i.fa.fa-shopping-cart(aria-hidden='true')
+                Cart
+            if session.cart.totalItems
+                session.cart.totalItems
+
+        .dropdown-menu
+            .cart
+                each
+                session.cart.items
+                    .row
+                        .col-xs-4
+                            this.item.title
+                        .col-xs-4.text-right
+                            span.badge this.quantity
+                        .col-xs-4.text-right
+                            this.price  €
+
+                    .row
+                        .text-right
+                            .totalPrice Total:
+                            session.cart.totalPrice €
+                            a.btn.btn-success(href='/cart/') Proceed
+
+h1 {{title}}
+p Welcome to the {{title}}
+| {{# each products }}
+.row
+    .col-md-12
+        .thumbnail
+            .caption
+                h3 {{ this.title }}
+                p.description {{{this.description}}}
+                .clearfix
+                    .price.pull-left
+                        i.fa.fa-tag(aria-hidden='true')
+                        |  {{ this.price }} €
+                    a.btn.btn-default.pull-right(href='/add/{{ this.id }}' role='button')
+                        i.fa.fa-shopping-cart(aria-hidden='true')
+                        |  Add to cart
+| {{/each}}
+

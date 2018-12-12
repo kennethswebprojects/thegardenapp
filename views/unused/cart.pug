@@ -1,0 +1,30 @@
+extends ../dashboardlayout
+block content
+    h1 #{title}
+    if products
+    .cart.page
+        ul.list-group
+            each products
+            li.list-group-item.clearfix
+                .col-xs-5
+                    strong #{ this.item.title }
+                    br
+                    em {#{this.item.description}}
+                .col-xs-2.text-right
+                    span.badge #{ this.quantity }
+                .col-xs-3.text-right
+                    | #{ this.price } €
+                .col-xs-2.text-right
+                    a.btn.btn-default(href='/remove/#{this.item.id}')  Remove
+            |             {/each}
+    .text-right
+        strong Total: #{ totalPrice } €
+    hr
+    .text-right
+        a.btn.btn-success(href='#', type='button') Checkout
+    | { else }
+    |     Your shopping cart is empty.
+    | {/if}
+
+
+

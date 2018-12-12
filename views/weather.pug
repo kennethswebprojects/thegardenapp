@@ -1,8 +1,20 @@
-extends layout
-
+extends weatherlayout
 block content
-  h1= title
-  p Welcome to #{title}
-  p This is weather page 
-  
-  This will be the page that the api from open weather maps will be called from
+
+    //iframe(src='”https://www.met.ie/widgets/national”', style='”border:1px', #ccc='', solid;”='', name='”MEWarning”', scrolling='”no”', frameborder='”1″', marginheight='”0px”', marginwidth='”0px”', width='”300″', height='”425″', allowfullscreen='')
+    //<iframe src=”https://www.met.ie/widgets/national” style=”border:1px #ccc solid;” name=”MEWarning” scrolling=”no” frameborder=”1″ marginheight=”0px” marginwidth=”0px” width=”300″ height=”425″ allowfullscreen></iframe>
+    //  ^^^This code was un-used, it came from Met Eireann and allowed for a County based basic weather report. Further research led to the discovery of HighCharts and the resultant widget.
+    //script(async='' src='//jsfiddle.net/kenkozilla/zfkd7ma6/embed/result/dark/')
+    script(async='' src='//jsfiddle.net/kenkozilla/08t6dkpo/embed/result/dark/')
+    #container(style='max-width: 800px; min-width: 380px; height: 310px; margin: 0 auto')
+        #loading(style='margin-top: 100px; text-align: center')
+            i.fa.fa-spinner.fa-spin
+            |  Loading data from external source
+    div(style='width: 800px; margin: 0 auto')
+        a(href='#http://www.yr.no/place/ireland/leinster/dublin/forecast_hour_by_hour.xml') Dublin,
+        a(href='#http://www.yr.no/place/Ireland/Munster/Skibbereen/forecast_hour_by_hour.xml') Skibbereen,
+        a(href='#http://www.yr.no/place/Ireland/Connacht/Galway/forecast_hour_by_hour.xml') Galway
+    br
+    br
+
+    p Weather information called from https://www.yr.no

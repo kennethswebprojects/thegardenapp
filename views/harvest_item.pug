@@ -1,0 +1,20 @@
+extends dashboardlayout
+
+block content
+    head
+        link(rel='stylesheet', href="../css/style.css", type="text/css")
+    body
+        .row
+            .holder
+                h1 Harvest item page!
+                    .grid-container
+                        each row in resHI
+                            .item
+                                h1.itemtitle #{row.Name}
+                                p.itemp Price: &euro;#{row.Price}
+                                p.itemp Activity: #{row.Activity}
+                                p.itemp Description: #{row.Description}
+                                p.itemp Harvest Weight: #{row.Harvestweight} kg
+                                p.itemp Harvest Units: #{row.Harvestunits}
+                                p.itemp Harvested by: #{row.Username}
+                    a.button(href='/harvest') Show all harvest items

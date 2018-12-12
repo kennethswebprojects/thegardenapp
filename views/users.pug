@@ -1,6 +1,15 @@
-extends layout
+extends dashboardlayout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  p This is Users page 
+    h1 The Garden App Users Page
+
+    .row
+        .holder
+            .grid-container
+                each row in resUsers
+                    .item
+                        .itemp Username: #{row.Username}
+                        .itemp Email: #{row.Email}
+
+                        a.button(href='/delete/' + row.Id + '') -Delete #{row.Name}
+

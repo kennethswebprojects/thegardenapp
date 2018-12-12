@@ -32,6 +32,7 @@ app.use('/routes', express.static('routes'));
 app.use('/css', express.static('css'));
 app.use('/js', express.static('js'));
 app.use('/img', express.static('img'));
+app.use('/dist', express.static('dist'));
 
 
 app.set("view engine", "pug");
@@ -200,15 +201,15 @@ app.get('/harvest_item/:id', function (req, res) {
 // Edit harvest item form
 
 app.get('/harvest_edit/:id', function (req, res) {
-    let sqlHE = 'SELECT * FROM Harvest WHERE Id = "' + req.params.id + '";';
-    let query = db.query(sqlHE, (err, resHE) => {
+    let sql = 'SELECT * FROM Harvest WHERE Id = "' + req.params.id + '";';
+    let query = db.query(sql, (err, resHE) => {
         if (err) throw err;
         console.log(resHE);
-        console.log(this.sql);
-        res.render('harvest_edit', {id: +req.params.id, resHE}); // This will render the harvest_edit page for us
+
+        res.render('harvest_edit', {resHE}); // This will render the harvest_edit page for us
     });
 
-    console.log("That worked");
+    console.log("Now you are on the harvest_edit page!");
 
 });
 
@@ -217,23 +218,27 @@ app.get('/harvest_edit/:id', function (req, res) {
 
 app.post('/harvest_edit/:id', function (req, res) {
     //let sql = 'UPDATE harvest SET Name = "' + req.body.name + '", Price = "' + req.body.price + '", Activity = "' + req.body.activity + '", Image = "' + req.body.image + '" WHERE Id = "' + req.params.id + '";';
-    let sqlHE = 'UPDATE Harvest SET Username = "' + req.body.username + '", Type = "' + req.body.type + '", Price = "' + req.body.price + '", Description = "' + req.body.description + '", Harvest weight = "' + req.body.harvestweight + '"kg, Harvestunits = "' + req.body.harvestunits + '" WHERE Id = "' + req.params.id + '";';
-    let query = db.query(sqlHE, (err, resHE) => {
+    let sql = `UPDATE Harvest SET Username = "${req.body.username}", Type = "${req.body.type}", Price = "${req.body.price}", Description = "${req.body.description}", Harvestweight = "${req.body.harvestweight}", Harvestunits = "${req.body.harvestunits}" WHERE Id = "${req.params.id}";`;
+    let query = db.query(sql, (err, resHE) => {
         if (err) throw err;
         console.log(resHE);
-        console.log(this.sql)
-
+        console.log(this.sql);
+        console.log(sql);
     });
     console.log("Harvest item edited");
-    res.redirect("/harvest");
+
+    res.redirect("/harvest_item/" + req.params.id);
+    res.send("Successfully edited harvest item!");
+    console.log("Successfully edited harvest item!");
+
 });
 
 
 // Delete harvest item
 
 app.get('/harvest_delete/:id', function (req, res) {
-    let sql = 'DELETE FROM harvest WHERE Id = "' + req.params.id + '" ; ';
-    let query = db.query(sql, (err, res2) => {
+    let sqlD = 'DELETE FROM Harvest WHERE Id = "' + req.params.id + '" ; ';
+    let query = db.query(sqlD, (err, res2) => {
         if (err) throw err;
         console.log(res2);
 
@@ -279,9 +284,9 @@ app.post('/task_create', function (req, res) {
 
 // Show individual Task item page
 app.get('/task_item/:id', function (req, res) {
-    let sqlTI = 'SELECT * FROM task WHERE Id = "' + req.params.id + '";';
+    let sql = 'SELECT * FROM task WHERE Id = "' + req.params.id + '";';
 
-    let query = db.query(sqlTI, (err, resTI) => {
+    let query = db.query(sql, (err, resTI) => {
         if (err) throw err;
         console.log(resTI);
 
@@ -295,25 +300,25 @@ app.get('/task_item/:id', function (req, res) {
 // Edit task item
 
 app.get('/task_edit/:id', function (req, res) {
-    let sqlET = 'SELECT * FROM task WHERE Id = "' + req.params.id + '";';
+    let sql = 'SELECT * FROM task WHERE Id = "' + req.params.id + '";';
 
-    let query = db.query(sqlET, (err, resET) => {
+    let query = db.query(sql, (err, resET) => {
         if (err) throw err;
         console.log(resET);
         console.log(this.sql);
         res.render('task_edit', {resET}); // This will render the individual task.pug page for us
     });
 
-    console.log("View the task item ");
+    console.log("View the task item to be edited ");
 
 });
 
-// ***** Post new task to database
+// ***** Post edited task to database
 
-app.post('/task_create/:id', function (req, res) {
+app.post('/task_edit/:id', function (req, res) {
 
-    let sqlTC = 'UPDATE task SET Username = "' + req.body.username + '", Type = "' + req.body.type + '", "Description = "' + req.body.description + '";';
-    let query = db.query(sqlTC, (err, resTC) => {
+    let sql = 'UPDATE task SET Username = "' + req.body.username + '", Type = "' + req.body.type + '", Description = "' + req.body.description + '" WHERE Id = "' + req.params.id + '";';
+    let query = db.query(sql, (err, resTC) => {
         if (err) throw err;
         console.log(resTC);
 
@@ -327,8 +332,8 @@ app.post('/task_create/:id', function (req, res) {
 // Delete task item
 
 app.get('/task_delete/:id', function (req, res) {
-    let sqlTD = 'DELETE FROM task WHERE Id = "' + req.params.id + '" ; ';
-    let query = db.query(sqlTD, (err, resTD) => {
+    let sql = 'DELETE FROM task WHERE Id = "' + req.params.id + '" ; ';
+    let query = db.query(sql, (err, resTD) => {
         if (err) throw err;
         console.log(resTD);
 
@@ -353,6 +358,21 @@ app.get('/users', function (req, res) {
         res.render('users', {resUsers});
         console.log("Now you are on the Users and can view all of the Users that are registered!");
     });
+});
+
+
+app.get('/delete/:id', function (req, res) {
+
+    let sql = 'DELETE FROM users WHERE Id = "' + req.params.id + '" ;';
+    let query = db.query(sql, (err, resDU) => {
+        if (err)
+            throw(err);
+        console.log(resDU);
+        res.redirect('/users');
+
+    });
+
+    console.log("They're Gone!");
 });
 // --------------------------------------------------------- Authenthication, protected routes, Passport strategies and the following redirection ------------------------------------------------------------ //
 

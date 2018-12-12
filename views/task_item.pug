@@ -1,0 +1,16 @@
+extends dashboardlayout
+
+block content
+    head
+        link(rel='stylesheet', href="../css/style.css", type="text/css")
+    body
+        .row
+            .holder
+                h1 Task item page!
+                    .grid-container
+                        each row in resTI
+                            .item
+                                h1.itemtitle #{row.Type}
+                                p.itemp Description: #{row.Description}
+                                p.itemp Posted by: #{row.Username}
+        a.button(href='/task') Show all task items

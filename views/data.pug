@@ -1,6 +1,32 @@
 extends dashboardlayout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  p This is Task List page 
+    head
+        link(rel='stylesheet', href="../css/style.css", type="text/css")
+        link(rel='stylesheet', href='dist/switchery.css')
+        script(src='dist/switchery.js')
+
+    body
+        h1= title
+        p Welcome to the Data / Internet of Things page
+        p This is the section of The Garden App where you can remotely interact with the irrigation system and learn about the status of the environment in the polytunnel through the use of sensors, the Raspberry Pi micro-computer and Arduino micro-controllers.
+
+        br
+        br
+        p This is the switch for the first water pump
+        input.js-switch(type='checkbox', checked='')
+        p This is the switch for the second water pump
+        input.js-switch(type='checkbox', checked='')
+        p This is the switch for the third water pump
+        input.js-switch(type='checkbox', checked='')
+        p This is the switch for the fourth water pump
+        input.js-switch(type='checkbox', checked='')
+
+        script.
+            var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+            elems.forEach(function (html) {
+                var switchery = new Switchery(elems, {disabled: true});
+                var switchery = new Switchery(html);
+
+            });

@@ -1,0 +1,48 @@
+doctype html
+html
+    head
+        title= title
+
+        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css')
+        script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+        script(src='https://code.highcharts.com/highcharts.js')
+        script(src='https://code.highcharts.com/modules/windbarb.js')
+        script(src='https://code.highcharts.com/modules/exporting.js')
+        script(src='https://highcharts.github.io/pattern-fill/pattern-fill-v2.js')
+        link(href='https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=Unica+One', rel='stylesheet')
+        link(rel='stylesheet', href="../css/style.css", type="text/css")
+        script(src='/js/weather.js')
+    body
+
+    .header.container
+        .nav.site-header.py-1(style=" border-width:5px; border-top-style:solid; border-bottom-style:solid;")
+            .container.d-flex.flex-column.flex-md-row.justify-content-between
+                .row
+
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/') Home
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/crop') Crop Scheduler
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/events') Events Calendar
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/task') Task List
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/data') Data / IoT
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/weather') Weather page
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/harvest') Harvest list
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/users') Users / Staff page
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/profile') Profile page
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    a.py-2.text-muted.d-none.d-md-inline-block(href='/logout') Log-Out
+
+
+        block content
+
+
+
+

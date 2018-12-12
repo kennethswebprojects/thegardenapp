@@ -1,0 +1,111 @@
+extends ../dashboardlayout
+block content
+    head
+        title Weather
+        meta(charset='utf-8')
+        link(href='../bootstrap.min.css', rel='stylesheet')
+        link(href='../style.css', rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=Unica+One', rel='stylesheet')
+        meta(name='theme-color', content='#161616')
+        meta(http-equiv='refresh', content='1800')
+        meta(name='viewport', content='width=1024px')
+        link(rel='manifest', href='../manifest.json')
+        link(rel='apple-touch-icon', sizes='57x57', href='../img/favicon/apple-touch-icon-57x57.png')
+        link(rel='apple-touch-icon', sizes='60x60', href='../img/favicon/apple-touch-icon-60x60.png')
+        link(rel='apple-touch-icon', sizes='72x72', href='../img/favicon/apple-touch-icon-72x72.png')
+        link(rel='apple-touch-icon', sizes='76x76', href='../img/favicon/apple-touch-icon-76x76.png')
+        link(rel='apple-touch-icon', sizes='114x114', href='../img/favicon/apple-touch-icon-114x114.png')
+        link(rel='apple-touch-icon', sizes='120x120', href='../img/favicon/apple-touch-icon-120x120.png')
+        link(rel='apple-touch-icon', sizes='144x144', href='../img/favicon/apple-touch-icon-144x144.png')
+        link(rel='apple-touch-icon', sizes='152x152', href='../img/favicon/apple-touch-icon-152x152.png')
+        link(rel='apple-touch-icon', sizes='180x180', href='../img/favicon/apple-touch-icon-180x180.png')
+        link(rel='icon', type='image/png', href='../img/favicon/favicon-32x32.png', sizes='32x32')
+        link(rel='icon', type='image/png', href='../img/favicon/favicon-96x96.png', sizes='96x96')
+        link(rel='icon', type='image/png', href='../img/favicon/favicon-16x16.png', sizes='16x16')
+        link(rel='icon', type='image/png', href='../img/favicon/android-chrome-192x192.png', sizes='192x192')
+        link(rel='icon', type='image/png', href='../img/favicon/android-chrome-256x256.png', sizes='256x256')
+        link(rel='icon', type='image/png', href='../img/favicon/android-chrome-384x384.png', sizes='384x384')
+        link(rel='icon', type='image/png', href='../img/favicon/android-chrome-512x512.png', sizes='512x512')
+        meta(name='mobile-web-app-capable', content='yes')
+        meta(name='apple-mobile-web-app-capable', content='yes')
+    body
+        .row
+            .span4
+                #dial-wind.widget
+            .span4.map.pos-rel
+                #map-rain
+                    .map-widget
+                        // <img src="http://www.dwd.de/wundk/radar/Radarfilm_WEB_SE.gif" class="map-image" /> <!-- 4 Stunden, 3 MB
+                        //
+                            https://www.dwd.de/DWD/wetter/radar/radfilm_bay_akt.gif
+                            https://ecn.t1.tiles.virtualearth.net/tiles/ho031312?g=671&mkt=en-us
+                            MET eireann version of this https://devcdn.metweb.ie/api/maps/radar/201812021925/62/41/7/1543779057
+                        img.map-image(src='https://www.dwd.de/DWD/wetter/radar/radfilm_bay_akt.gif')
+                        // 2,5 Std, 300KB
+                        img.pin(src='../map-pin.png')
+                        img.mask(src='../map-mask.png')
+                    h2 Precipitation Radar
+                    h3 For last 2.5 Hours
+                #suntimes
+                #icon-weather
+                #dial-temperature
+            .span4.map.pos-rel
+                #map-lightning
+                    .map-widget
+                        // <img src="http://www.dwd.de/wundk/radar/Radarfilm_WEB_SE.gif" class="map-image" /> <!-- 4 Stunden, 3 MB
+                        img.map-image(src='https://images.lightningmaps.org/blitzortung/europe/index.php?map=de')
+                        // 2 Std, 300KB
+                        img.pin(src='../map-pin.png')
+                        img.mask(src='../map-mask.png')
+                    h2 Lightning Radar
+                    h3 For last 2 Hours
+            //
+                <div class="span4">
+                <div id="dial-pressure" class="widget" ></div>
+                </div>
+        #text-warning.row
+            .span12
+                h2 Weather warning
+                h3
+                p
+        .row
+            .span12
+                #chart-pressure.widget
+        .row
+            .span12
+                #chart-temp.widget
+        .row
+            .span12
+                #chart-wind.widget
+        .row
+            .span12
+                #chart-rain.widget
+        .row.footer
+            .span12
+                #license
+                    | Forecast:
+                    a(href='https://darksky.net/poweredby/') Dark Sky
+                    br
+                    |                Precipitation Radar:
+                    a(href='https://dwd.de/') Deutscher Wetterdienst
+                    br
+                    |                Lightning Radar:
+                    a(href='https://www.lightningmaps.org/') lightningmaps.org
+                #date
+        #loading.row
+            .span12 Loading Weather Data…
+        #apimissing.row
+            .span12
+                | It seems the API key is missing.
+                br
+                |            Please append it to the URL like
+                br
+                |           ?apikey=5ede394648df55cf729a5eea87777090
+                code index.html?apikey=abcdef
+        script(src='/jquery-1.9.1.min.js')
+        script(src='/highcharts.js')
+        script(src='/highcharts-more.js')
+        script(src='/dark-unica.js')
+        script(src='/charts.js')
+        script(src='/loader.js')
+        script(src='/screensaver.js')

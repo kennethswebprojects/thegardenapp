@@ -1,19 +1,29 @@
 extends dashboardlayout
-
 block content
-  h1= title
-  p Welcome to #{title}
-  p This is Task List page 
-  
-  p This will have a CRUD facility for the group to indicate what tasks need to be tended to around the garden.
+    head
+        link(rel='stylesheet', href="../css/style.css", type="text/css")
+    body
+        h1 Edit Task list item Page
 
+            p This page allows the user to edit a task item list post.
 
-
-
-  a(href='/task_create') Create Task list item
-  br
-  a(href='/task_edit') Edit Task list item
-  br
-  a(href='/task_delete') Delete Task list item
-  br
-  a(href='/task') View Task list items
+        h2.itemtitle Edit Task item list Form
+            .row
+                .container
+                    .item
+                        form(accept-charset="UTF-8" action="/task_edit/:id" method="post")
+                            .form-group
+                                fieldset
+                                    .form-group
+                                        label(for='Username') User:
+                                        input.form-control(name='username', type='text', placeholder='The user editing the task list item')
+                                        br
+                                    .form-group
+                                        label(for='Type') Task list type:
+                                        input.form-control(name='type', type='text', placeholder='Please edit the task list type')
+                                        br
+                                    .form-group
+                                        label(for='Description') Task list item description:
+                                        input.form-control(name='description', type='text', placeholder='Please describe the type of task')
+                                        br
+                                    button.button(type='submit') Submit

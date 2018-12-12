@@ -1,8 +1,44 @@
 extends dashboardlayout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  p This is Events page 
-  
-  Calendar to go here
+    h1= title
+    h2 Welcome to the Events Calendar page
+    br
+    br
+    p The events calendar serves to help in managing the many social events that are involved with the running of an active community garden.
+    | Skill sharing through workshops, distribution of harvested food and key time-frames for the group to share the workload of tending to the crops can all be noted and seen by everyone involved here.
+
+    iframe(width='100%' height='600' src='//jsfiddle.net/kenkozilla/21z97k83/embedded/result/dark/' allowfullscreen='allowfullscreen' allowpaymentrequest='' frameborder='0')
+        //.container
+
+            div(#calendar)
+            div(#datepicker)
+            div(#calendar)
+            div(#datepicker)
+            .modal.fade(tabindex='-1', role='dialog')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                            h4.modal-title Create new event
+                        .modal-body
+                            .row
+                                .col-xs-12
+                                    label.col-xs-4(for='title') Event title
+                                    input#title(type='text', name='title')
+                            .row
+                                .col-xs-12
+                                    label.col-xs-4(for='starts-at') Starts at
+                                    input#starts-at(type='text', name='starts_at')
+                            .row
+                                .col-xs-12
+                                    label.col-xs-4(for='ends-at') Ends at
+                                    input#ends-at(type='text', name='ends_at')
+                        .modal-footer
+                            button.btn.btn-default(type='button', data-dismiss='modal') Close
+                            button#save-event.btn.btn-primary(type='button') Save changes
+
+
+
+                        //
