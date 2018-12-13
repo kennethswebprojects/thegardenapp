@@ -5,6 +5,10 @@ block content
         link(rel='stylesheet', href="../css/style.css", type="text/css")
         link(rel='stylesheet', href='dist/switchery.css')
         script(src='dist/switchery.js')
+        script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+        script(src='https://code.highcharts.com/highcharts.js')
+        script(src='https://code.highcharts.com/modules/exporting.js')
+
 
     body
         h1= title
@@ -22,6 +26,15 @@ block content
         p This is the switch for the fourth water pump
         input.js-switch(type='checkbox', checked='')
 
+        br
+        br
+        h2 This is the Data section for graphing sensor data
+        p The graph below represents temperature within the polytunnel
+        br
+        br
+        #container(style='height: 400px')
+            button#button.autocompare Add series
+
         script.
             var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
@@ -29,4 +42,23 @@ block content
                 var switchery = new Switchery(elems, {disabled: true});
                 var switchery = new Switchery(html);
 
+            });
+
+        script.
+            var chart = Highcharts.chart('container', {
+                xAxis: {
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                },
+                series: [{
+                    data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+                }]
+            });
+
+            // the button handler
+            $('#button').click(function () {
+                if (chart.series.length === 1) {
+                    chart.addSeries({
+                        data: [194.1, 95.6, 54.4, 29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4]
+                    });
+                }
             });
